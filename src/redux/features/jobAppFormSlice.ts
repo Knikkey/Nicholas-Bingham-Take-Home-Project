@@ -1,17 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface FormData {
-  [key: string]: string;
+  data: { [key: string]: string } | null;
 }
 
-const initialState: FormData = {};
+const initialState: FormData = { data: null };
 
 export const jobAppFormSlice = createSlice({
-  name: "jobAppForm",
+  name: "job app form slice",
   initialState,
   reducers: {
     setFormData: (state, action) => {
-      return { ...state, ...action.payload };
+      return { data: action.payload };
     },
   },
 });

@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { setFormData } from "@/redux/features/jobAppFormSlice";
 import { AppDispatch, useTypedSelector } from "@/redux/store";
 import { useDispatch } from "react-redux";
@@ -14,30 +14,48 @@ import { formFields } from "@/data/data.js";
 import "./index.css";
 
 export default function Home() {
+  const [formValues, setFormValues] = useState({});
   const dispatch = useDispatch<AppDispatch>();
+  const data = useTypedSelector((state) => state.jobAppForm);
+
+  const handleChange = (e: any) => {
+    setFormValues({
+      ...formValues,
+      [e.target.id]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log(formValues);
+  };
 
   return (
     <main>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <h1>Job Application Form</h1>
         {formFields.map((field) => {
           if (Array.isArray(field)) {
             return (
-              <FlexDiv key={Math.random()}>
-                {field.map((item) => (
-                  <Input
-                    key={item.id}
-                    aria-label={item.placeholder}
-                    {...item}
-                  />
-                ))}
-              </FlexDiv>
+              <>
+                <FlexDiv>
+                  {field.map((item) => (
+                    <Input
+                      key={item.id}
+                      onChange={handleChange}
+                      aria-label={item.placeholder}
+                      {...item}
+                    />
+                  ))}
+                </FlexDiv>
+              </>
             );
           }
           if (field.type === "textarea") {
             return (
               <Input
                 key={field.id}
+                onChange={handleChange}
                 as="textarea"
                 aria-label={field.placeholder}
                 {...field}
@@ -50,7 +68,7 @@ export default function Home() {
                 <label htmlFor={field.id}>
                   Select the role you are applying for:
                 </label>
-                <Select>
+                <Select onChange={handleChange} id={field.id}>
                   {field.options!.map((option) => (
                     <option key={option}>{option}</option>
                   ))}
@@ -59,7 +77,12 @@ export default function Home() {
             );
           } else
             return (
-              <Input key={field.id} aria-label={field.placeholder} {...field} />
+              <Input
+                onChange={handleChange}
+                key={field.id}
+                aria-label={field.placeholder}
+                {...field}
+              />
             );
         })}
         <Button type="submit">Submit</Button>

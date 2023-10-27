@@ -1,7 +1,7 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { setFormData } from "@/redux/features/jobAppFormSlice";
-import { AppDispatch, useTypedSelector } from "@/redux/store";
+import { AppDispatch } from "@/redux/store";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import Form from "@/_components/form-elements/form/Form";
@@ -16,7 +16,6 @@ import "./index.css";
 export default function Home() {
   const [formValues, setFormValues] = useState({});
   const dispatch = useDispatch<AppDispatch>();
-  const data = useTypedSelector((state) => state.jobAppForm);
 
   const handleChange = (e: any) => {
     setFormValues({
@@ -27,7 +26,7 @@ export default function Home() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(formValues);
+    dispatch(setFormData({ formValues }));
   };
 
   return (

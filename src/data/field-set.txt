@@ -57,10 +57,3 @@
     type: 'textarea',
   }
 ]
-
-if (type === 'select') {
-  const filteredProps = notOptions
-  <Select {...filteredProps}>
-  options.map(option => <option>{option}</option>)
-  </Select>
-}

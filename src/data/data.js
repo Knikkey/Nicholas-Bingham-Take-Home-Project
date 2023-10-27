@@ -18,6 +18,9 @@ export const formFields = [
     placeholder: "Email",
     required: true,
     type: "email",
+    pattern: "[^@s]+@[^@s]+.[^@s]+[a-z]{1,4}",
+    $errorMessage:
+      "Emails must be written in the following format: email@domain.com",
   },
   {
     id: "address1",
@@ -45,7 +48,11 @@ export const formFields = [
     id: "phone",
     required: true,
     placeholder: "Phone Number",
-    type: "number",
+    pattern: "[0-9]",
+    minlength: "7",
+    $errorMessage:
+      "Phone numbers can only consist of numbers 1 - 9 and must be at least 7 digits long",
+    type: "tel",
   },
   {
     id: "jobTitle",

@@ -15,4 +15,15 @@ export const Input = styled.input<Props>`
   &:focus {
     outline: 1px solid blue;
   }
+
+  &:invalid ~ span {
+    display: block;
+  }
+`;
+
+export const InputError = styled.span`
+  color: red;
+  font-size: 0.8rem;
+  text-align: left;
+  display: none;
 `;

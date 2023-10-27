@@ -5,7 +5,7 @@ import { AppDispatch } from "@/redux/store";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import Form from "@/_components/form-elements/form/Form";
-import Input from "@/_components/form-elements/input/Input";
+import Input, { InputError } from "@/_components/form-elements/input/Input";
 import Select from "@/_components/form-elements/select/Select";
 import Button from "@/_components/buttons/Button";
 import { FlexDiv } from "@/_components/divs/flex-div/FlexDiv.styles";
@@ -41,12 +41,14 @@ export default function Home() {
               <>
                 <FlexDiv>
                   {field.map((item) => (
-                    <Input
-                      key={item.id}
-                      onChange={handleChange}
-                      aria-label={item.placeholder}
-                      {...item}
-                    />
+                    <>
+                      <Input
+                        key={item.id}
+                        onChange={handleChange}
+                        aria-label={item.placeholder}
+                        {...item}
+                      />
+                    </>
                   ))}
                 </FlexDiv>
               </>
@@ -54,13 +56,18 @@ export default function Home() {
           }
           if (field.type === "textarea") {
             return (
-              <Input
-                key={field.id}
-                onChange={handleChange}
-                as="textarea"
-                aria-label={field.placeholder}
-                {...field}
-              />
+              <>
+                <Input
+                  key={field.id}
+                  onChange={handleChange}
+                  as="textarea"
+                  aria-label={field.placeholder}
+                  {...field}
+                />
+                {field.$errorMessage && (
+                  <InputError>{field.$errorMessage}</InputError>
+                )}
+              </>
             );
           }
           if (field.type === "select") {
@@ -76,12 +83,17 @@ export default function Home() {
             );
           } else
             return (
-              <Input
-                onChange={handleChange}
-                key={field.id}
-                aria-label={field.placeholder}
-                {...field}
-              />
+              <>
+                <Input
+                  onChange={handleChange}
+                  key={field.id}
+                  aria-label={field.placeholder}
+                  {...field}
+                />
+                {field.$errorMessage && (
+                  <InputError>{field.$errorMessage}</InputError>
+                )}
+              </>
             );
         })}
         <Button type="submit">Submit</Button>

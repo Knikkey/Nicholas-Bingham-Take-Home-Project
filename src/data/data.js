@@ -15,8 +15,9 @@ export const formFields = [
   ],
   {
     id: "Email",
+    placeholder: "Email",
     required: true,
-    type: "text",
+    type: "email",
   },
   {
     id: "address1",
@@ -26,21 +27,25 @@ export const formFields = [
   [
     {
       id: "city",
+      placeholder: "City",
       type: "text",
     },
     {
       id: "state",
+      placeholder: "State",
       type: "text",
     },
     {
       id: "zip",
+      placeholder: "Zip Code",
       type: "text",
     },
   ],
   {
     id: "phone",
     required: true,
-    type: "text",
+    placeholder: "Phone Number",
+    type: "tel",
   },
   {
     id: "jobTitle",

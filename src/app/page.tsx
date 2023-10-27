@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import Form from "@/_components/form-elements/form/Form";
 import Input from "@/_components/form-elements/input/Input";
 import Select from "@/_components/form-elements/select/Select";
+import Button from "@/_components/buttons/Button";
 import { FlexDiv } from "@/_components/divs/flex-div/FlexDiv.styles";
 import { formFields } from "@/data/data.js";
 
@@ -18,6 +19,7 @@ export default function Home() {
   return (
     <main>
       <Form>
+        <h1>Job Application Form</h1>
         {formFields.map((field) => {
           if (Array.isArray(field)) {
             return (
@@ -60,6 +62,7 @@ export default function Home() {
               <Input key={field.id} aria-label={field.placeholder} {...field} />
             );
         })}
+        <Button type="submit">Submit</Button>
       </Form>
     </main>
   );

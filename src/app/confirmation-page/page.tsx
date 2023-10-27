@@ -6,9 +6,10 @@ import Select from "@/_components/form-elements/select/Select";
 import FlexDiv from "@/_components/divs/flex-div/FlexDiv";
 import { formFields } from "@/data/data.js";
 
+const noDataMessage = "Data not provided";
+
 export default function Page() {
   const { data } = useTypedSelector((state) => state.jobAppForm);
-  const noDataMessage = "Data not provided";
 
   return (
     <Form as="div">

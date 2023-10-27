@@ -2,12 +2,17 @@
 import styled from "styled-components";
 
 type Props = {
-  $column?: boolean;
+  $forceRow?: boolean;
 };
 
 export const FlexDiv = styled.div<Props>`
   display: flex;
-  flex-direction: ${({ $column }) => ($column ? "column" : "row")};
   align-items: center;
   gap: 0.5rem;
+  @media (max-width: 700px) {
+    flex-direction: ${({ $forceRow }) =>
+      $forceRow ? "row !important" : "column"};
+    gap: 1rem;
+    justify-content: center;
+  }
 `;

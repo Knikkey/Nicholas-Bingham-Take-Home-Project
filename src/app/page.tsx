@@ -65,10 +65,8 @@ export default function Home() {
           }
           if (field.type === "select") {
             return (
-              <FlexDiv key={field.id}>
-                <label htmlFor={field.id}>
-                  Select the role you are applying for:
-                </label>
+              <FlexDiv key={field.id} $forceRow>
+                <label htmlFor={field.id}>Select a role to apply for:</label>
                 <Select onChange={handleChange} id={field.id}>
                   {field.options!.map((option) => (
                     <option key={option}>{option}</option>

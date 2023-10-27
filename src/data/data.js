@@ -38,18 +38,19 @@ export const formFields = [
     {
       id: "zip",
       placeholder: "Zip Code",
-      type: "text",
+      type: "number",
     },
   ],
   {
     id: "phone",
     required: true,
     placeholder: "Phone Number",
-    type: "tel",
+    type: "number",
   },
   {
     id: "jobTitle",
     options: [
+      "Select Role",
       "Engineer - lead",
       "Engineer - mid level",
       "Engineer - junion",

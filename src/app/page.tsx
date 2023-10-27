@@ -23,23 +23,42 @@ export default function Home() {
             return (
               <FlexDiv key={Math.random()}>
                 {field.map((item) => (
-                  <Input key={item.id} {...item} />
+                  <Input
+                    key={item.id}
+                    aria-label={item.placeholder}
+                    {...item}
+                  />
                 ))}
               </FlexDiv>
             );
           }
           if (field.type === "textarea") {
-            return <Input key={field.id} as="textarea" {...field} />;
+            return (
+              <Input
+                key={field.id}
+                as="textarea"
+                aria-label={field.placeholder}
+                {...field}
+              />
+            );
           }
           if (field.type === "select") {
             return (
-              <Select key={field.id}>
-                {field.options!.map((option) => (
-                  <option key={option}>{option}</option>
-                ))}
-              </Select>
+              <FlexDiv key={field.id}>
+                <label htmlFor={field.id}>
+                  Select the role you are applying for:
+                </label>
+                <Select>
+                  {field.options!.map((option) => (
+                    <option key={option}>{option}</option>
+                  ))}
+                </Select>
+              </FlexDiv>
             );
-          } else return <Input key={field.id} {...field} />;
+          } else
+            return (
+              <Input key={field.id} aria-label={field.placeholder} {...field} />
+            );
         })}
       </Form>
     </main>

@@ -16,6 +16,7 @@ import "./index.css";
 export default function Home() {
   const [formValues, setFormValues] = useState({});
   const dispatch = useDispatch<AppDispatch>();
+  const router = useRouter();
 
   const handleChange = (e: any) => {
     setFormValues({
@@ -26,7 +27,8 @@ export default function Home() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch(setFormData({ formValues }));
+    dispatch(setFormData({ ...formValues }));
+    router.push("/confirmation-page");
   };
 
   return (

@@ -14,7 +14,7 @@ export const formFields = [
     },
   ],
   {
-    id: "Email",
+    id: "email",
     placeholder: "Email",
     required: true,
     type: "email",

@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const SubmitButton = styled.button`
   width: fit-content;
   padding: 0.5rem 1rem;
-  background-color: transparent;
+  background-color: #c9ff00;
+  font-weight: bold;
   align-self: center;
   border: 1px solid black;
   border-radius: 7px;

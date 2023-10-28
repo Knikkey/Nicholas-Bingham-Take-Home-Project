@@ -18,7 +18,7 @@ export const formFields = [
     placeholder: "Email",
     required: true,
     type: "email",
-    pattern: "[^@s]+@[^@s]+\\.+[^@s]+[a-z]{1}",
+    pattern: "[^@]+@[^@]+\\.+[^@s]+[a-z]{1}",
     $errorMessage:
       "Emails must be written in the following format: email@domain.com",
   },

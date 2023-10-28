@@ -16,6 +16,7 @@ import { formFields } from "@/data/data.js";
 
 export default function ApplicationForm() {
   const [formValues, setFormValues] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
 
@@ -28,6 +29,7 @@ export default function ApplicationForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     dispatch(setFormData({ ...formValues }));
     router.push("/confirmation-page");
   };
@@ -96,7 +98,9 @@ export default function ApplicationForm() {
             </>
           );
       })}
-      <SubmitButton type="submit">Submit</SubmitButton>
+      <SubmitButton type="submit" disabled={isSubmitting}>
+        {isSubmitting ? "Submitting..." : "Submit"}
+      </SubmitButton>
     </Form>
   );
 }

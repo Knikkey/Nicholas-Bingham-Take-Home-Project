@@ -49,7 +49,6 @@ export const formFields = [
     required: true,
     placeholder: "Phone Number",
     pattern: "[0-9]{7,}",
-    minlength: "7",
     $errorMessage:
       "Phone numbers can only consist of numbers 1 - 9 and must be at least 7 digits long",
     type: "tel",

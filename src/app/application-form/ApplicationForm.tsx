@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { useState } from "react";
 import { setFormData } from "@/redux/features/jobAppFormSlice";
 import { AppDispatch } from "@/redux/store";
@@ -35,7 +36,7 @@ export default function ApplicationForm() {
       {formFields.map((field) => {
         if (Array.isArray(field)) {
           return (
-            <FlexDiv key={Math.random()}>
+            <FlexDiv key={`input-container-${Math.random()}`}>
               {field.map((item) => (
                 <Input
                   {...item}
@@ -49,10 +50,9 @@ export default function ApplicationForm() {
         }
         if (field.type === "textarea") {
           return (
-            <>
+            <React.Fragment key={field.id}>
               <Input
                 {...field}
-                key={field.id}
                 onChange={handleChange}
                 as="textarea"
                 aria-label={field.placeholder}
@@ -60,7 +60,7 @@ export default function ApplicationForm() {
               {field.$errorMessage && (
                 <InputError>{field.$errorMessage}</InputError>
               )}
-            </>
+            </React.Fragment>
           );
         }
         if (field.type === "select") {
@@ -76,17 +76,16 @@ export default function ApplicationForm() {
           );
         } else
           return (
-            <>
+            <React.Fragment key={field.id}>
               <Input
                 {...field}
                 onChange={handleChange}
-                key={field.id}
                 aria-label={field.placeholder}
               />
               {field.$errorMessage && (
                 <InputError>{field.$errorMessage}</InputError>
               )}
-            </>
+            </React.Fragment>
           );
       })}
       <SubmitButton onClick={handleSubmit} disabled={isSubmitting}>

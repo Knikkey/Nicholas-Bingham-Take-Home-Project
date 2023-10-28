@@ -21,7 +21,7 @@ export const Input = styled.input<Props>`
 `;
 
 export const InputError = styled.span`
-  color: red;
+  color: #fe4600;
   font-size: 0.8rem;
   text-align: left;
   display: none;

@@ -35,18 +35,16 @@ export default function ApplicationForm() {
       {formFields.map((field) => {
         if (Array.isArray(field)) {
           return (
-            <>
-              <FlexDiv>
-                {field.map((item) => (
-                  <Input
-                    {...item}
-                    key={item.id}
-                    onChange={handleChange}
-                    aria-label={item.placeholder}
-                  />
-                ))}
-              </FlexDiv>
-            </>
+            <FlexDiv key={Math.random()}>
+              {field.map((item) => (
+                <Input
+                  {...item}
+                  key={item.id}
+                  onChange={handleChange}
+                  aria-label={item.placeholder}
+                />
+              ))}
+            </FlexDiv>
           );
         }
         if (field.type === "textarea") {

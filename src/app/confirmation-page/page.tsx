@@ -30,46 +30,31 @@ export default function Page() {
                 return (
                   <FlexDiv key={Math.random()}>
                     {field.map((item) => (
-                      <Input
-                        value={data[item.id] || noDataMessage}
-                        key={item.id}
-                        disabled
-                        aria-label={item.placeholder}
-                      />
+                      <Input as="p" key={item.id}>
+                        {data[item.id] || noDataMessage}
+                      </Input>
                     ))}
                   </FlexDiv>
                 );
               }
               if (field.type === "textarea") {
                 return (
-                  <Input
-                    key={field.id}
-                    as="textarea"
-                    value={data[field.id] || noDataMessage}
-                    disabled
-                    aria-label={field.placeholder}
-                  />
+                  <Input as="p" key={field.id}>
+                    {data[field.id] || noDataMessage}
+                  </Input>
                 );
               }
               if (field.type === "select") {
                 return (
-                  <FlexDiv key={field.id} $row>
-                    <label htmlFor={field.id}>
-                      Select a role to apply for:
-                    </label>
-                    <Select id={field.id} disabled>
-                      <option>{data[field.id] || noDataMessage}</option>
-                    </Select>
-                  </FlexDiv>
+                  <Input as="p" key={field.id}>
+                    {data[field.id] || noDataMessage}
+                  </Input>
                 );
               } else
                 return (
-                  <Input
-                    key={field.id}
-                    value={data[field.id] || noDataMessage}
-                    disabled
-                    aria-label={field.placeholder}
-                  />
+                  <Input as="p" key={field.id}>
+                    {data[field.id] || noDataMessage}
+                  </Input>
                 );
             })}
         </Form>

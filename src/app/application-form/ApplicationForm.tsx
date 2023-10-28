@@ -15,22 +15,17 @@ import { FlexDiv } from "@/_components/divs/flex-div/FlexDiv.styles";
 import { formFields } from "@/data/data.js";
 
 export default function ApplicationForm() {
-  const [formValues, setFormValues] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
 
   const handleChange = (e: any) => {
-    setFormValues({
-      ...formValues,
-      [e.target.id]: e.target.value,
-    });
+    dispatch(setFormData({ [e.target.id]: e.target.value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    dispatch(setFormData({ ...formValues }));
     router.push("/confirmation-page");
   };
 

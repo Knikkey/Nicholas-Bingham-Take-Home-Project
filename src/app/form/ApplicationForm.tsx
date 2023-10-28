@@ -4,10 +4,13 @@ import { setFormData } from "@/redux/features/jobAppFormSlice";
 import { AppDispatch } from "@/redux/store";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
-import Form from "@/_components/form-elements/form/Form";
-import Input, { InputError } from "@/_components/form-elements/input/Input";
-import Select from "@/_components/form-elements/select/Select";
-import Button from "@/_components/buttons/Button";
+import { Form } from "@/_components/form-elements/form/Form.styles";
+import {
+  Input,
+  InputError,
+} from "@/_components/form-elements/input/Input.styles";
+import { Select } from "@/_components/form-elements/select/Select.styles";
+import { SubmitButton } from "@/_components/buttons/Button.styles";
 import { FlexDiv } from "@/_components/divs/flex-div/FlexDiv.styles";
 import { formFields } from "@/data/data.js";
 
@@ -93,7 +96,7 @@ export default function ApplicationForm() {
             </>
           );
       })}
-      <Button type="submit">Submit</Button>
+      <SubmitButton type="submit">Submit</SubmitButton>
     </Form>
   );
 }

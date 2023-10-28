@@ -1,9 +1,9 @@
 "use client";
 import { useTypedSelector } from "@/redux/store";
-import Form from "@/_components/form-elements/form/Form";
-import Input from "@/_components/form-elements/input/Input";
-import Select from "@/_components/form-elements/select/Select";
-import FlexDiv from "@/_components/divs/flex-div/FlexDiv";
+import { Form } from "@/_components/form-elements/form/Form.styles";
+import { Input } from "@/_components/form-elements/input/Input.styles";
+import { Select } from "@/_components/form-elements/select/Select.styles";
+import { FlexDiv } from "@/_components/divs/flex-div/FlexDiv.styles";
 import { formFields } from "@/data/data.js";
 
 const noDataMessage = "Data not provided";

@@ -43,14 +43,12 @@ export default function ApplicationForm() {
             <>
               <FlexDiv>
                 {field.map((item) => (
-                  <>
-                    <Input
-                      key={item.id}
-                      onChange={handleChange}
-                      aria-label={item.placeholder}
-                      {...item}
-                    />
-                  </>
+                  <Input
+                    key={item.id}
+                    onChange={handleChange}
+                    aria-label={item.placeholder}
+                    {...item}
+                  />
                 ))}
               </FlexDiv>
             </>

@@ -12,14 +12,15 @@ const noDataMessage = "Data not provided";
 export default function Page() {
   const { data } = useTypedSelector((state) => state.jobAppForm);
   const router = useRouter();
+  const hasData = !!Object.keys(data).length;
 
   useEffect(() => {
-    if (!data) router.push("/");
+    if (!hasData) router.push("/");
   });
 
   return (
     <>
-      {data && (
+      {hasData && (
         <Form as="div">
           <h1>Application Submitted</h1>
           <p>Below is the submitted data</p>

@@ -4,6 +4,16 @@ html {
 
 * {
   box-sizing: inherit;
+  font-family: inherit;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../imgs/background_img.jpg");
+  height: 100dvh;
+  background-size: cover;
 }
 
 input::-webkit-outer-spin-button,

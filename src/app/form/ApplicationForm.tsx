@@ -44,10 +44,10 @@ export default function ApplicationForm() {
               <FlexDiv>
                 {field.map((item) => (
                   <Input
+                    {...item}
                     key={item.id}
                     onChange={handleChange}
                     aria-label={item.placeholder}
-                    {...item}
                   />
                 ))}
               </FlexDiv>
@@ -58,11 +58,11 @@ export default function ApplicationForm() {
           return (
             <>
               <Input
+                {...field}
                 key={field.id}
                 onChange={handleChange}
                 as="textarea"
                 aria-label={field.placeholder}
-                {...field}
               />
               {field.$errorMessage && (
                 <InputError>{field.$errorMessage}</InputError>
@@ -85,10 +85,10 @@ export default function ApplicationForm() {
           return (
             <>
               <Input
+                {...field}
                 onChange={handleChange}
                 key={field.id}
                 aria-label={field.placeholder}
-                {...field}
               />
               {field.$errorMessage && (
                 <InputError>{field.$errorMessage}</InputError>

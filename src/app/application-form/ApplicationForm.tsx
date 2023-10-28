@@ -14,6 +14,8 @@ import { Select } from "@/_components/form-elements/select/Select.styles";
 import { SubmitButton } from "@/_components/buttons/Button.styles";
 import { FlexDiv } from "@/_components/divs/flex-div/FlexDiv.styles";
 import { formFields } from "@/data/data.js";
+import Image from "next/image";
+import logo from "../../imgs/logo.png";
 
 export default function ApplicationForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -33,7 +35,10 @@ export default function ApplicationForm() {
 
   return (
     <Form>
-      <h1>Job Application Form</h1>
+      <FlexDiv $row>
+        <Image src={logo} alt="" />
+        <h1>Job Application Form</h1>
+      </FlexDiv>
       {formFields.map((field) => {
         if (Array.isArray(field)) {
           return (

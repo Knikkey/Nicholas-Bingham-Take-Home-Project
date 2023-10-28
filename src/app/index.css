@@ -1,10 +1,12 @@
 html {
   box-sizing: border-box;
+  margin: 0;
 }
 
 * {
   box-sizing: inherit;
   font-family: inherit;
+  margin: inherit;
 }
 
 main {
@@ -22,6 +24,10 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-p {
-  margin: 0;
+h1 {
+  margin: 1rem 0;
+}
+
+img {
+  height: 2.5rem;
 }

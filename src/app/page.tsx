@@ -1,4 +1,4 @@
-import ApplicationForm from "./form/ApplicationForm";
+import ApplicationForm from "./application-form/ApplicationForm";
 import "./index.css";
 
 export default function Home() {

@@ -1,7 +1,8 @@
 import { render, screen } from "@testing-library/react";
-import Input, {
+import {
+  Input,
   InputError,
-} from "../src/_components/form-elements/input/Input";
+} from "../src/_components/form-elements/input/Input.styles";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 
@@ -16,7 +17,7 @@ describe("Email input", () => {
           placeholder="Email"
           required=""
           type="email"
-          pattern="[^@s]+@[^@s]+.[^@s]+[a-z]{1,4}"
+          pattern="[^@]+@[^@]+.[^@s]+[a-z]{1,4}"
         />
         <InputError>Error</InputError>
       </>

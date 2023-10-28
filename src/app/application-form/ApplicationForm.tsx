@@ -30,7 +30,7 @@ export default function ApplicationForm() {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form>
       <h1>Job Application Form</h1>
       {formFields.map((field) => {
         if (Array.isArray(field)) {
@@ -91,7 +91,7 @@ export default function ApplicationForm() {
             </>
           );
       })}
-      <SubmitButton type="submit" disabled={isSubmitting}>
+      <SubmitButton onClick={handleSubmit} disabled={isSubmitting}>
         {isSubmitting ? "Submitting..." : "Submit"}
       </SubmitButton>
     </Form>

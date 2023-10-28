@@ -6,6 +6,7 @@ html {
 * {
   box-sizing: inherit;
   margin: inherit;
+  color: #222222;
 }
 
 main {

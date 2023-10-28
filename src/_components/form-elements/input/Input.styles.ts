@@ -7,9 +7,15 @@ type Props = {
 export const Input = styled.input<Props>`
   width: 100%;
   padding: 0.5rem 1rem;
-  border: 1px solid black;
+  border: none;
   border-radius: 7px;
+  background-color: white;
+  background-color: #efefef;
   flex: ${({ $columns }) => ($columns ? `${100 / $columns}%` : `100%`)};
+
+  &::placeholder {
+    color: inherit;
+  }
 
   &:focus {
     outline: 1px solid blue;

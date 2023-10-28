@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 type Props = {
-  $forceRow?: boolean;
+  $row?: boolean;
 };
 
 export const FlexDiv = styled.div<Props>`
@@ -9,8 +9,7 @@ export const FlexDiv = styled.div<Props>`
   align-items: center;
   gap: 0.5rem;
   @media (max-width: 700px) {
-    flex-direction: ${({ $forceRow }) =>
-      $forceRow ? "row !important" : "column"};
+    flex-direction: ${({ $row }) => ($row ? "row" : "column")};
     gap: 1rem;
     justify-content: center;
   }

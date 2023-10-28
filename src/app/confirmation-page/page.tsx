@@ -44,7 +44,7 @@ export default function Page() {
           }
           if (field.type === "select") {
             return (
-              <FlexDiv key={field.id} $forceRow>
+              <FlexDiv key={field.id} $row>
                 <label htmlFor={field.id}>Select a role to apply for:</label>
                 <Select id={field.id} disabled>
                   <option>{data[field.id] || noDataMessage}</option>

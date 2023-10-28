@@ -72,7 +72,7 @@ export default function ApplicationForm() {
         }
         if (field.type === "select") {
           return (
-            <FlexDiv key={field.id} $forceRow>
+            <FlexDiv key={field.id} $row>
               <label htmlFor={field.id}>Select a role to apply for:</label>
               <Select onChange={handleChange} id={field.id}>
                 {field.options!.map((option) => (

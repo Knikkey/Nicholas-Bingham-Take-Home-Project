@@ -59,7 +59,7 @@ export const formFields = [
       "Select Role",
       "Engineer - lead",
       "Engineer - mid level",
-      "Engineer - junion",
+      "Engineer - junior",
       "Engineer - front end focused",
       "Engineer - backend focused",
       "Engineer - full stack",

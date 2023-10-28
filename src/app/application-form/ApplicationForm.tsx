@@ -2,7 +2,7 @@
 import React from "react";
 import { useState } from "react";
 import { setFormData } from "@/redux/features/jobAppFormSlice";
-import { AppDispatch } from "@/redux/store";
+import { AppDispatch, useTypedSelector } from "@/redux/store";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { Form } from "@/_components/form-elements/form/Form.styles";
@@ -18,6 +18,7 @@ import { formFields } from "@/data/data.js";
 export default function ApplicationForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
+  const { data } = useTypedSelector((state) => state.jobAppForm);
   const router = useRouter();
 
   const handleChange = (e: any) => {
@@ -57,9 +58,6 @@ export default function ApplicationForm() {
                 as="textarea"
                 aria-label={field.placeholder}
               />
-              {field.$errorMessage && (
-                <InputError>{field.$errorMessage}</InputError>
-              )}
             </React.Fragment>
           );
         }
@@ -82,7 +80,7 @@ export default function ApplicationForm() {
                 onChange={handleChange}
                 aria-label={field.placeholder}
               />
-              {field.$errorMessage && (
+              {field.id in data && field.$errorMessage && (
                 <InputError>{field.$errorMessage}</InputError>
               )}
             </React.Fragment>

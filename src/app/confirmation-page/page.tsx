@@ -55,7 +55,6 @@ export default function Page() {
             return (
               <Input
                 key={field.id}
-                {...field}
                 value={data[field.id] || noDataMessage}
                 disabled
                 aria-label={field.placeholder}

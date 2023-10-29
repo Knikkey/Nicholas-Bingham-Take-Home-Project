@@ -1,10 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { formFields } from "@/data/data";
 
 interface FormData {
   data: { [key: string]: string };
 }
 
-const initialState: FormData = { data: {} };
+const initialState: FormData = {
+  data: formFields
+    .flat()
+    .reduce((acc, curr) => ({ ...acc, [curr.id]: "" }), {}),
+};
 
 export const jobAppFormSlice = createSlice({
   name: "job app form slice",

@@ -25,8 +25,8 @@
   },
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
+    "**/*.{js,jsx,ts,tsx}",
+    "**/*.test.{js,jsx,ts,tsx}",
     ".next/types/**/*.ts",
     "src/_components/form-elements/input/Input.js"
   ],

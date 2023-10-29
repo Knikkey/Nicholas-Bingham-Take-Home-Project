@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { formFields } from "@/data/data";
 
-interface FormData {
+export interface FormDataType {
   data: { [key: string]: string };
 }
 
-const initialState: FormData = {
+const initialState: FormDataType = {
   data: formFields
     .flat()
     .reduce((acc, curr) => ({ ...acc, [curr.id]: "" }), {}),

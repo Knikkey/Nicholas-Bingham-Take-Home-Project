@@ -17,6 +17,13 @@ import { formFields } from "@/data/data.js";
 import Image from "next/image";
 import logo from "../../imgs/logo.png";
 
+const isRequired = formFields
+  .flat()
+  .filter((item) => "required" in item)
+  .map((item) => item.id);
+const hasPattern = formFields.flat().filter((item) => "pattern" in item);
+const hasPatternIds = hasPattern.map((item) => item.id);
+
 export default function ApplicationForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
@@ -27,9 +34,22 @@ export default function ApplicationForm() {
     dispatch(setFormData({ [e.target.id]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (submittedData: { [key: string]: string }) => {
     setIsSubmitting(true);
+    for (let [key, value] of Object.entries(submittedData)) {
+      if (isRequired.includes(key) && value.length < 1) {
+        setIsSubmitting(false);
+        return;
+      }
+      if (hasPatternIds.includes(key)) {
+        const currentObject = hasPattern.find((item) => item.id === key);
+        const { pattern } = currentObject;
+        if (!value.match(pattern)) {
+          setIsSubmitting(false);
+          return;
+        }
+      }
+    }
     router.push("/confirmation-page");
   };
 
@@ -85,13 +105,13 @@ export default function ApplicationForm() {
                 onChange={handleChange}
                 aria-label={field.placeholder}
               />
-              {field.id in data && field.$errorMessage && (
+              {data[field.id].length > 0 && field.$errorMessage && (
                 <InputError>{field.$errorMessage}</InputError>
               )}
             </React.Fragment>
           );
       })}
-      <SubmitButton onClick={handleSubmit} disabled={isSubmitting}>
+      <SubmitButton onClick={() => handleSubmit(data)} disabled={isSubmitting}>
         {isSubmitting ? "Submitting..." : "Submit"}
       </SubmitButton>
     </Form>

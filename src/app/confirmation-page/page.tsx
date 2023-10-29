@@ -6,6 +6,9 @@ import { Form } from "@/_components/form-elements/form/Form.styles";
 import { Input } from "@/_components/form-elements/input/Input.styles";
 import { FlexDiv } from "@/_components/divs/flex-div/FlexDiv.styles";
 import { formFields } from "@/data/data.js";
+import Image from "next/image";
+import logo from "../../imgs/logo.png";
+import "@/app/index.css";
 
 const noDataMessage = "Data not provided";
 
@@ -22,7 +25,10 @@ export default function Page() {
     <main>
       {hasData && (
         <Form as="div">
-          <h1>Application Submitted</h1>
+          <FlexDiv $row>
+            <Image src={logo} alt="" />
+            <h1>Application Submitted</h1>
+          </FlexDiv>
           <p>Below is the submitted data</p>
           {data &&
             formFields.map((field) => {

@@ -12,7 +12,7 @@ const initialState: FormDataType = {
 };
 
 export const jobAppFormSlice = createSlice({
-  name: "job app form slice",
+  name: "jobAppForm",
   initialState,
   reducers: {
     setFormData: (state, action) => {

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ReduxProvider from "@/redux/provider";
+import StyledComponentsRegistry from "@/app/StyledComponentsRegistry";
 
 export const metadata: Metadata = {
   title: "Dynamic Form",
@@ -14,7 +15,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ReduxProvider>{children}</ReduxProvider>
+        <ReduxProvider>
+          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        </ReduxProvider>
       </body>
     </html>
   );

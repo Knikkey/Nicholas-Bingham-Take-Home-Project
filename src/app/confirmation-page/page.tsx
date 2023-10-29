@@ -19,7 +19,7 @@ export default function Page() {
   });
 
   return (
-    <>
+    <main>
       {hasData && (
         <Form as="div">
           <h1>Application Submitted</h1>
@@ -59,6 +59,6 @@ export default function Page() {
             })}
         </Form>
       )}
-    </>
+    </main>
   );
 }

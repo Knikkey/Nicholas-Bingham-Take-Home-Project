@@ -18,9 +18,8 @@ export const jobAppFormSlice = createSlice({
     setFormData: (state, action) => {
       state.data = { ...state.data, ...action.payload };
     },
-    resetState: () => initialState,
   },
 });
 
-export const { setFormData, resetState } = jobAppFormSlice.actions;
+export const { setFormData } = jobAppFormSlice.actions;
 export default jobAppFormSlice.reducer;

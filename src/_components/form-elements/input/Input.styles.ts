@@ -12,6 +12,7 @@ export const Input = styled.input<Props>`
   background-color: white;
   background-color: #efefef;
   flex: ${({ $columns }) => ($columns ? `${100 / $columns}%` : `100%`)};
+  margin: 0;
 
   &::placeholder {
     color: inherit;

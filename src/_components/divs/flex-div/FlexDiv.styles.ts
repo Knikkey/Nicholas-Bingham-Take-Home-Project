@@ -9,6 +9,7 @@ export const FlexDiv = styled.div<Props>`
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  margin: 0;
   @media (max-width: 700px) {
     flex-direction: ${({ $row }) => ($row ? "row" : "column")};
     justify-content: center;

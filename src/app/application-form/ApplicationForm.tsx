@@ -30,7 +30,11 @@ export default function ApplicationForm() {
   const { data } = useTypedSelector((state) => state.jobAppForm);
   const router = useRouter();
 
-  const handleChange = (e: any) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
     dispatch(setFormData({ [e.target.id]: e.target.value }));
   };
 
@@ -59,16 +63,17 @@ export default function ApplicationForm() {
         <Image src={logo} alt="" />
         <h1>Job Application Form</h1>
       </FlexDiv>
-      {formFields.map((field) => {
+      {formFields.map((field, i) => {
         if (Array.isArray(field)) {
           return (
-            <FlexDiv key={`input-container-${Math.random()}`}>
+            <FlexDiv key={`input-container-${i}`}>
               {field.map((item) => (
                 <Input
                   {...item}
                   key={item.id}
                   onChange={handleChange}
                   aria-label={item.placeholder}
+                  value={data[item.id]}
                 />
               ))}
             </FlexDiv>
@@ -82,6 +87,7 @@ export default function ApplicationForm() {
                 onChange={handleChange}
                 as="textarea"
                 aria-label={field.placeholder}
+                value={data[field.id]}
               />
             </React.Fragment>
           );
@@ -90,7 +96,11 @@ export default function ApplicationForm() {
           return (
             <FlexDiv key={field.id} $row>
               <label htmlFor={field.id}>Select a role to apply for:</label>
-              <Select onChange={handleChange} id={field.id}>
+              <Select
+                onChange={handleChange}
+                id={field.id}
+                value={data[field.id]}
+              >
                 {field.options!.map((option) => (
                   <option key={option}>{option}</option>
                 ))}
@@ -104,6 +114,7 @@ export default function ApplicationForm() {
                 {...field}
                 onChange={handleChange}
                 aria-label={field.placeholder}
+                value={data[field.id]}
               />
               {data[field.id].length > 0 && field.$errorMessage && (
                 <InputError>{field.$errorMessage}</InputError>

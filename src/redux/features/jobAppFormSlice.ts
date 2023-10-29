@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { formFields } from "@/data/data";
 
-export interface FormDataType {
+interface FormDataType {
   data: { [key: string]: string };
 }
 
@@ -18,8 +18,9 @@ export const jobAppFormSlice = createSlice({
     setFormData: (state, action) => {
       state.data = { ...state.data, ...action.payload };
     },
+    resetState: () => initialState,
   },
 });
 
-export const { setFormData } = jobAppFormSlice.actions;
+export const { setFormData, resetState } = jobAppFormSlice.actions;
 export default jobAppFormSlice.reducer;

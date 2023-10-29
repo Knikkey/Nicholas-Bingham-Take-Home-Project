@@ -1,5 +1,10 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import {
+  isRequired,
+  hasPattern,
+  hasPatternIds,
+} from "../application-form/ApplicationForm";
 import { useRouter } from "next/navigation";
 import { useTypedSelector } from "@/redux/store";
 import { Form } from "@/_components/form-elements/form/Form.styles";
@@ -13,17 +18,32 @@ import "@/app/index.css";
 const noDataMessage = "Data not provided";
 
 export default function Page() {
+  const [isValid, setIsValid] = useState(false);
   const { data } = useTypedSelector((state) => state.jobAppForm);
   const router = useRouter();
-  const hasData = !!Object.keys(data).length;
 
   useEffect(() => {
-    if (!hasData) router.push("/");
+    const checkValidData = () => {
+      for (let [key, value] of Object.entries(data)) {
+        if (isRequired.includes(key) && value.length < 1) {
+          router.push("/");
+        }
+        if (hasPatternIds.includes(key)) {
+          const currentObject = hasPattern.find((item) => item.id === key);
+          const { pattern } = currentObject;
+          if (!value.match(pattern)) {
+            router.push("/");
+          }
+        }
+      }
+      setIsValid(true);
+    };
+    checkValidData();
   });
 
   return (
     <main>
-      {hasData && (
+      {isValid && (
         <Form as="div">
           <FlexDiv $row>
             <Image src={logo} alt="" />

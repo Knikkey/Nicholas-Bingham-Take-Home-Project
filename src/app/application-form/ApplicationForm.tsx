@@ -17,12 +17,12 @@ import { formFields } from "@/data/data.js";
 import Image from "next/image";
 import logo from "../../imgs/logo.png";
 
-const isRequired = formFields
+export const isRequired = formFields
   .flat()
   .filter((item) => "required" in item)
   .map((item) => item.id);
-const hasPattern = formFields.flat().filter((item) => "pattern" in item);
-const hasPatternIds = hasPattern.map((item) => item.id);
+export const hasPattern = formFields.flat().filter((item) => "pattern" in item);
+export const hasPatternIds = hasPattern.map((item) => item.id);
 
 export default function ApplicationForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);

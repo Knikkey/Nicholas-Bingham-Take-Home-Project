@@ -13,7 +13,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("../imgs/background_img.jpg");
+  background-image: url("../imgs/background_img.webp");
   height: 100dvh;
   background-size: cover;
 }

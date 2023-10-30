@@ -41,7 +41,7 @@ export default function ApplicationForm() {
   const handleSubmit = (submittedData: { [key: string]: string }) => {
     setIsSubmitting(true);
     for (let [key, value] of Object.entries(submittedData)) {
-      if (isRequired.includes(key) && value.length < 1) {
+      if (isRequired.includes(key) && !value.length) {
         setIsSubmitting(false);
         return;
       }

@@ -25,7 +25,7 @@ export default function Page() {
   useEffect(() => {
     const checkValidData = () => {
       for (let [key, value] of Object.entries(data)) {
-        if (isRequired.includes(key) && value.length < 1) {
+        if (isRequired.includes(key) && !value.length) {
           router.push("/");
         }
         if (hasPatternIds.includes(key)) {

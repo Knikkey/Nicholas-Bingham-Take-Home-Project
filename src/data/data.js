@@ -2,20 +2,20 @@ export const formFields = [
   [
     {
       id: "firstName",
-      placeholder: "First name",
+      placeholder: "First name*",
       required: true,
       type: "text",
     },
     {
       id: "lastName",
-      placeholder: "Last name",
+      placeholder: "Last name*",
       required: true,
       type: "text",
     },
   ],
   {
     id: "email",
-    placeholder: "Email",
+    placeholder: "Email*",
     required: true,
     type: "email",
     pattern: "[^@]+@[^@]+\\.+[^@s]+[a-z]{1}",
@@ -47,7 +47,7 @@ export const formFields = [
   {
     id: "phone",
     required: true,
-    placeholder: "Phone Number",
+    placeholder: "Phone Number*",
     pattern: "[0-9]{7,}",
     $errorMessage:
       "Phone numbers can only consist of numbers 1 - 9 and must be at least 7 digits long",

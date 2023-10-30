@@ -20,7 +20,7 @@ To begin working with this project, follow these steps:
 
 ## General Comments
 
-Thank you for taking the time to review this project. I aimed to create a versatile form component capable of rendering various types of forms when provided with different field data. Notably, the form submission triggers via an `onClick` method on the button, which was based on my interpretation of the project instructions. Most of the styled components are in separate JavaScript files, which enhances code clarity. For the sake of time, the test files are also in JavaScript, as this project won't be deployed to production. It was an engaging take-home project, and I'm pleased to have completed it.
+Thank you for taking the time to review this project. I aimed to create a versatile form component capable of rendering various types of forms when provided with different field data. Most of the styled components are in separate JavaScript files, which enhances code clarity. For the sake of time, the test files are also in JavaScript, as this project won't be deployed to production. It was an engaging take-home project, and I'm pleased to have completed it.
 
 ## Possible Improvements
 

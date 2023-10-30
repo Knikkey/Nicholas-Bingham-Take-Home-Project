@@ -16,7 +16,7 @@ To begin working with this project, follow these steps:
   `npm run test:coverage`
 
   Here's a screenshot of the coverage so you don't need to run the command
-  ![coverage report](/.coverage.png)
+  ![coverage report](./coverage.png)
 
 ## General Comments
 

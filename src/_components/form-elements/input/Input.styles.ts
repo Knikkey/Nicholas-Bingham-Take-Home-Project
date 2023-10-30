@@ -22,7 +22,7 @@ export const Input = styled.input<Props>`
     outline: 1px solid blue;
   }
 
-  &:invalid ~ span {
+  &:invalid + span {
     display: block;
   }
 `;

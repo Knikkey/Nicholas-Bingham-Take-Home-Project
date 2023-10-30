@@ -1,16 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
-import {
-  isRequired,
-  hasPattern,
-  hasPatternIds,
-} from "../application-form/ApplicationForm";
 import { useRouter } from "next/navigation";
 import { useTypedSelector } from "@/redux/store";
+import { formFields } from "@/data/data";
 import { Form } from "@/_components/form-elements/form/Form.styles";
 import { Input } from "@/_components/form-elements/input/Input.styles";
 import { FlexDiv } from "@/_components/divs/flex-div/FlexDiv.styles";
-import { formFields } from "@/data/data.js";
+import { isValidData } from "@/functions/isValid";
 import Image from "next/image";
 import logo from "../../imgs/logo.png";
 import "@/app/index.css";
@@ -23,23 +19,13 @@ export default function Page() {
   const router = useRouter();
 
   useEffect(() => {
-    const checkValidData = () => {
-      for (let [key, value] of Object.entries(data)) {
-        if (isRequired.includes(key) && !value.length) {
-          router.push("/");
-        }
-        if (hasPatternIds.includes(key)) {
-          const currentObject = hasPattern.find((item) => item.id === key);
-          const { pattern } = currentObject;
-          if (!value.match(pattern)) {
-            router.push("/");
-          }
-        }
-      }
-      setIsValid(true);
-    };
-    checkValidData();
-  });
+    const isValid = isValidData(data);
+    if (!isValid) {
+      router.push("/");
+      return;
+    }
+    setIsValid(true);
+  }, [data, router]);
 
   return (
     <main>

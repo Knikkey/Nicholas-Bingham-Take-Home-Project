@@ -14,15 +14,9 @@ import { Select } from "@/_components/form-elements/select/Select.styles";
 import { SubmitButton } from "@/_components/buttons/Button.styles";
 import { FlexDiv } from "@/_components/divs/flex-div/FlexDiv.styles";
 import { formFields } from "@/data/data.js";
+import { isValidData } from "@/functions/isValid";
 import Image from "next/image";
 import logo from "../../imgs/logo.png";
-
-export const isRequired = formFields
-  .flat()
-  .filter((item) => "required" in item)
-  .map((item) => item.id);
-export const hasPattern = formFields.flat().filter((item) => "pattern" in item);
-export const hasPatternIds = hasPattern.map((item) => item.id);
 
 export default function ApplicationForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -40,19 +34,10 @@ export default function ApplicationForm() {
 
   const handleSubmit = (submittedData: { [key: string]: string }) => {
     setIsSubmitting(true);
-    for (let [key, value] of Object.entries(submittedData)) {
-      if (isRequired.includes(key) && !value.length) {
-        setIsSubmitting(false);
-        return;
-      }
-      if (hasPatternIds.includes(key)) {
-        const currentObject = hasPattern.find((item) => item.id === key);
-        const { pattern } = currentObject;
-        if (!value.match(pattern)) {
-          setIsSubmitting(false);
-          return;
-        }
-      }
+    const isValid = isValidData(submittedData);
+    if (!isValid) {
+      setIsSubmitting(false);
+      return;
     }
     router.push("/confirmation-page");
   };
